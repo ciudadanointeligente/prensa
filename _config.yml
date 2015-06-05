@@ -1,0 +1,186 @@
+# Site settings
+title: Your awesome title
+email: your-email@domain.com
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+markdown: kramdown
+
+periods:
+  -
+    years: 
+      -
+        year: 2011
+        sheets:
+          - 
+            month: abril
+            sheet: 'abril_2011'
+          -
+            month: mayo
+            sheet: 'mayo_2011'
+          -
+            month: junio
+            sheet: 'junio_2011'
+          -
+            month: julio
+            sheet: 'julio_2011'
+          -
+            month: agosto
+            sheet: 'agosto_2011'
+          -
+            month: septiembre
+            sheet: 'septiembre_2011'
+          -
+            month: octubre
+            sheet: 'octubre_2011'
+          -
+            month: noviembre
+            sheet: 'noviembre_2011'
+          -
+            month: diciembre
+            sheet: 'diciembre_2011'
+      -
+        year: 2012
+        sheets:
+          -
+            month: enero
+            sheet: 'enero_2012'
+          -
+            month: febrero
+            sheet: 'febrero_2012'
+          -
+            month: marzo
+            sheet: 'marzo_2012'
+          -
+            month: abril
+            sheet: 'abril_2012'
+          -
+            month: mayo
+            sheet: 'mayo_2012'
+          -
+            month: junio
+            sheet: 'junio_2012'
+          -
+            month: julio
+            sheet: 'julio_2012'
+          -
+            month: agosto
+            sheet: 'agosto_2012'
+          -
+            month: septiembre
+            sheet: 'septiembre_2012'
+          -
+            month: octubre
+            sheet: 'octubre_2012'
+          -
+            month: noviembre
+            sheet: 'noviembre_2012'
+          -
+            month: diciembre
+            sheet: 'diciembre_2012'
+      -
+        year: 2013
+        sheets:
+          -
+            month: enero
+            sheet: 'enero_2013'
+          -
+            month: febrero
+            sheet: 'febrero_2013'
+          -
+            month: marzo
+            sheet: 'marzo_2013'
+          -
+            month: abril
+            sheet: 'abril_2013'
+          -
+            month: mayo
+            sheet: 'mayo_2013'
+          -
+            month: junio
+            sheet: 'junio_2013'
+          -
+            month: julio
+            sheet: 'julio_2013'
+          -
+            month: agosto
+            sheet: 'agosto_2013'
+          -
+            month: septiembre
+            sheet: 'septiembre_2013'
+          -
+            month: octubre
+            sheet: 'octubre_2013'
+          -
+            month: noviembre
+            sheet: 'noviembre_2013'
+          -
+            month: diciembre
+            sheet: 'diciembre_2013'
+      -
+        year: 2014
+        sheets:
+          -
+            month: enero
+            sheet: 'enero_2014'
+          -
+            month: febrero
+            sheet: 'febrero_2014'
+          -
+            month: marzo
+            sheet: 'marzo_2014'
+          -
+            month: abril
+            sheet: 'abril_2014'
+          -
+            month: mayo
+            sheet: 'mayo_2014'
+          -
+            month: junio
+            sheet: 'junio_2014'
+          -
+            month: julio
+            sheet: 'julio_2014'
+          -
+            month: agosto
+            sheet: 'agosto_2014'
+          -
+            month: septiembre
+            sheet: 'septiembre_2014'
+          -
+            month: octubre
+            sheet: 'octubre_2014'
+          -
+            month: noviembre
+            sheet: 'noviembre_2014'
+          -
+            month: diciembre
+            sheet: 'diciembre_2014'
+      -
+        year: 2015
+        sheets:
+          -
+            month: enero
+            sheet: 'enero_2015'
+          -
+            month: febrero
+            sheet: 'febrero_2015'
+          -
+            month: marzo
+            sheet: 'marzo_2015'
+          -
+            month: abril
+            sheet: 'abril_2015'
+          -
+            month: mayo
+            sheet: 'mayo_2015'
+          -
+            month: junio
+            sheet: 'junio_2015'

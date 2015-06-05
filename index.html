@@ -1,0 +1,70 @@
+---
+layout: default
+---
+<div>
+
+  <div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist">
+      {% for period in site.periods %}
+        {% for y in period.years %}
+        <li role="presentation" class=""><a href="#year-{{ y.year }}" aria-controls="home" role="tab" data-toggle="tab">{{ y.year }}</a></li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+
+    <div class="tab-content">
+      {% for period in site.periods %}
+        {% for y in period.years %}
+        <div role="tabpanel" class="tab-pane" id="year-{{ y.year }}">
+          <ul class="list-inline">
+          {% for s in y.sheets %}
+            <li><a href="#{{ s.month }}" onclick="get_news('{{ y.year }}','{{ s.month }}')">{{ s.month }}</a></li>
+          {% endfor %}
+          </ul>
+          {% for s in y.sheets %}
+          <div id="month-{{ s.month }}">
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  function get_news(year, month) {
+    {% for y in site.periods[0].years %}
+      if ( '{{y.year}}' == year ) {
+        {% for s in y.sheets %}
+          if ( '{{s.month}}' == month ) {
+            var url = '//script.google.com/macros/s/AKfycbw8T0PhIuD9NqpH0nOpU32P6ypDjwqvqs-p3nuu67UXCHU8E5qo/exec' + '?id=1AWDMIZsE9k3jQaJlgCKBt8vwVHg4Tg4MqHd-09CRc6I' + '&sheet={{s.sheet}}'
+            draw_news(url, '{{y.year}}', '{{s.month}}', '{{s.sheet}}')
+          }
+        {% endfor %}
+      }
+    {% endfor %}
+  }
+
+
+  function draw_news(url, year, month, sheet) {
+    var div = $('#year-'+year+' #month-'+month)
+    //clean
+    div.empty()
+    $.getJSON( url, function( data ) {
+      html = '<a name="'+month+'"></a><div class="page-header"><h3>'+month+'</h3></div>'
+      html += '<div class="row">';
+      var cnt = 1;
+      $.each(data[sheet], function(key, value){
+        html += '<div class="col-md-4 new '+sheet+'"><h3>'+value.medio+'</h3><p>'+value.fecha+'</p><p>'+value.tema+' <a href="'+value.link+'">leer</a></p></div>';
+        if( cnt%3==0 )
+          html += '</div><div class="row">'
+        cnt++
+      })
+      html += '</div>'
+      div.prepend(html)// = html
+    })
+  }
+</script>
