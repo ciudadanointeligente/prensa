@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div>
+<div id="news">
 
   <div role="tabpanel">
     <ul class="nav nav-tabs" role="tablist">
@@ -41,24 +41,35 @@ layout: default
         {% for s in y.sheets %}
           if ( '{{s.month}}' == month ) {
             var url = '//script.google.com/macros/s/AKfycbw8T0PhIuD9NqpH0nOpU32P6ypDjwqvqs-p3nuu67UXCHU8E5qo/exec' + '?id=1AWDMIZsE9k3jQaJlgCKBt8vwVHg4Tg4MqHd-09CRc6I' + '&sheet={{s.sheet}}'
-            draw_news(url, '{{y.year}}', '{{s.month}}', '{{s.sheet}}')
+            draw_news(url, '{{y.year}}', '{{s.month}}', '{{s.sheet}}');
+
           }
         {% endfor %}
       }
     {% endfor %}
   }
 
-
   function draw_news(url, year, month, sheet) {
     var div = $('#year-'+year+' #month-'+month)
     //clean
     div.empty()
     $.getJSON( url, function( data ) {
-      html = '<a name="'+month+'"></a><div class="page-header"><h3>'+month+'</h3></div>'
+      html = '<a name="'+month+'"></a><div class="page-header"><h4>'+month.toUpperCase()+'</h4></div>'
       html += '<div class="row">';
       var cnt = 1;
       $.each(data[sheet], function(key, value){
-        html += '<div class="col-md-4 new '+sheet+'"><h3>'+value.medio+'</h3><p>'+value.fecha+'</p><p>'+value.tema+' <a href="'+value.link+'">leer</a></p></div>';
+        html += '<div class="col-md-4 '+sheet+'">';
+        html += '<div class="article-news">';
+        html += '<ul class="list-inline">';
+        html += '<li><span class="label label-success">'+value.medio+'</span></li>';
+        html += '<li><small>'+value.fecha+'</small></li>';
+        html += '</ul>';
+        if(value.titular)
+          html += '<h4>'+value.titular+'</h4>';
+        html += '<p>'+value.tema+'</p>';
+        html += '<p><a href="'+value.link+'">leer</a></p>';
+        html += '</div>';
+        html += '</div>';
         if( cnt%3==0 )
           html += '</div><div class="row">'
         cnt++
@@ -66,5 +77,25 @@ layout: default
       html += '</div>'
       div.prepend(html)// = html
     })
+    set_position(month);
+  };
+
+  function set_position(month) {
+    window.location.href = '#'+month;
   }
+
+  document.addEventListener('DOMContentLoaded', function(){ 
+    var d = new Date();
+    var months = new Array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+
+    var year = d.getFullYear();
+    var month = months[d.getMonth()]; 
+    var sheet = month+"_"+year;
+    var url = '//script.google.com/macros/s/AKfycbw8T0PhIuD9NqpH0nOpU32P6ypDjwqvqs-p3nuu67UXCHU8E5qo/exec' + '?id=1AWDMIZsE9k3jQaJlgCKBt8vwVHg4Tg4MqHd-09CRc6I' + '&sheet='+sheet;
+    draw_news(url, year, month, sheet);
+
+    var get_pane = document.getElementById('year-'+year);
+    get_pane.classList.add("active");
+  }, false);
+
 </script>

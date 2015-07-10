@@ -1,0 +1,31 @@
+body {
+	color: $text-color;
+
+	header {
+		background-color: #060626;
+		padding-bottom: 10px;
+		h1 {
+			color: $text-color-header;
+		}
+	}
+
+	#news {
+		padding-top: 15px;
+
+		.tab-pane {
+			padding-top: 5px;
+		}
+
+		.article-news {
+			border: 1px solid #CCC;
+			border-radius: 5px;
+			padding: 5px 10px;
+			margin-bottom: 10px;
+		}
+	}
+
+	footer {
+		padding-top: 10px;
+		background-color: #060626;
+	}
+}
