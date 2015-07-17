@@ -1,5 +1,6 @@
 body {
 	color: $text-color;
+	background-color: #A3D7DD;
 
 	header {
 		background-color: #060626;
@@ -16,11 +17,16 @@ body {
 			padding-top: 5px;
 		}
 
+		.select {
+			padding: 10px 0px;
+		}
+
 		.article-news {
 			border: 1px solid #CCC;
 			border-radius: 5px;
 			padding: 5px 10px;
 			margin-bottom: 10px;
+			background-color: #FFF;
 		}
 	}
 

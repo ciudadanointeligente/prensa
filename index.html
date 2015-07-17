@@ -3,99 +3,101 @@ layout: default
 ---
 <div id="news">
 
-  <div role="tabpanel">
-    <ul class="nav nav-tabs" role="tablist">
-      {% for period in site.periods %}
-        {% for y in period.years %}
-        <li role="presentation" class=""><a href="#year-{{ y.year }}" aria-controls="home" role="tab" data-toggle="tab">{{ y.year }}</a></li>
-        {% endfor %}
-      {% endfor %}
-    </ul>
+	<div class="select text-center">
+		<select onchange="get_news(this.value)" data-placeholder="Selecciona una fecha" class="form-control chosen-select">
+			<option value=""></option>
+			{% for period in site.periods %}
+				{% for y in period.years %}
+				<optgroup label="{{ y.year }}">
+					{% for s in y.sheets %}
+					<option value="{{ y.year }}-{{ s.month }}">{{ s.month }}</option>
+					{% endfor %}
+				</optgroup>
+				{% endfor %}
+			{% endfor %}
+		</select>
+	</div>
 
-    <div class="tab-content">
-      {% for period in site.periods %}
-        {% for y in period.years %}
-        <div role="tabpanel" class="tab-pane" id="year-{{ y.year }}">
-          <ul class="list-inline">
-          {% for s in y.sheets %}
-            <li><a href="#{{ s.month }}" onclick="get_news('{{ y.year }}','{{ s.month }}')">{{ s.month }}</a></li>
-          {% endfor %}
-          </ul>
-          {% for s in y.sheets %}
-          <div id="month-{{ s.month }}">
-          </div>
-          {% endfor %}
-        </div>
-        {% endfor %}
-      {% endfor %}
-    </div>
-  </div>
+	<div id="articles"></div>
+
+	<div id="spin" class="text-center">
+		<i class="fa fa-spinner fa-spin fa-4x hidden"></i>
+	</div>
+
 </div>
 
 
 <script type="text/javascript">
 
-  function get_news(year, month) {
-    {% for y in site.periods[0].years %}
-      if ( '{{y.year}}' == year ) {
-        {% for s in y.sheets %}
-          if ( '{{s.month}}' == month ) {
-            var url = '//script.google.com/macros/s/AKfycbw8T0PhIuD9NqpH0nOpU32P6ypDjwqvqs-p3nuu67UXCHU8E5qo/exec' + '?id=1AWDMIZsE9k3jQaJlgCKBt8vwVHg4Tg4MqHd-09CRc6I' + '&sheet={{s.sheet}}'
-            draw_news(url, '{{y.year}}', '{{s.month}}', '{{s.sheet}}');
+  function get_news(filter_date) {
+  	var year = filter_date.split("-")[0];
+  	var month = filter_date.split("-")[1];
 
-          }
-        {% endfor %}
-      }
-    {% endfor %}
+  	spin(true);
+
+	{% for y in site.periods[0].years %}
+	  if ( '{{y.year}}' == year ) {
+		{% for s in y.sheets %}
+		  if ( '{{s.month}}' == month ) {
+			var url = '//script.google.com/macros/s/AKfycbw8T0PhIuD9NqpH0nOpU32P6ypDjwqvqs-p3nuu67UXCHU8E5qo/exec' + '?id=1AWDMIZsE9k3jQaJlgCKBt8vwVHg4Tg4MqHd-09CRc6I' + '&sheet={{s.sheet}}'
+			draw_news(url, '{{y.year}}', '{{s.month}}', '{{s.sheet}}');
+		  }
+		{% endfor %}
+	  }
+	{% endfor %}
+  }
+
+  function spin(status) {
+  	var classes = 'fa fa-spinner fa-spin fa-4x'
+  	var spin = document.getElementById('spin');
+  		spin.children[0].className = classes+' hidden';
+  	if(status)
+  		spin.children[0].className = classes;
   }
 
   function draw_news(url, year, month, sheet) {
-    var div = $('#year-'+year+' #month-'+month)
-    //clean
-    div.empty()
-    $.getJSON( url, function( data ) {
-      html = '<a name="'+month+'"></a><div class="page-header"><h4>'+month.toUpperCase()+'</h4></div>'
-      html += '<div class="row">';
-      var cnt = 1;
-      $.each(data[sheet], function(key, value){
-        html += '<div class="col-md-4 '+sheet+'">';
-        html += '<div class="article-news">';
-        html += '<ul class="list-inline">';
-        html += '<li><span class="label label-success">'+value.medio+'</span></li>';
-        html += '<li><small>'+value.fecha+'</small></li>';
-        html += '</ul>';
-        if(value.titular)
-          html += '<h4>'+value.titular+'</h4>';
-        html += '<p>'+value.tema+'</p>';
-        html += '<p><a href="'+value.link+'">leer</a></p>';
-        html += '</div>';
-        html += '</div>';
-        if( cnt%3==0 )
-          html += '</div><div class="row">'
-        cnt++
-      })
-      html += '</div>'
-      div.prepend(html)// = html
-    })
-    set_position(month);
+	// var div = $('#year-'+year+' #month-'+month)
+	var div = $('#articles')
+	//clean
+	div.empty();
+	$.getJSON( url, function( data ) {
+	  // html = '<div class="page-header"><h4>'+month.toUpperCase()+'</h4></div>'
+	  html = '<div class="row">';
+	  var cnt = 1;
+	  $.each(data[sheet], function(key, value){
+		if(value.titular) {
+			html += '<div class="col-md-4 '+sheet+'">';
+			html += '<div class="article-news">';
+			html += '<ul class="list-inline">';
+			html += '<li><span class="label label-success">'+value.medio+'</span></li>';
+			html += '<li><small>'+value.fecha+'</small></li>';
+			html += '</ul>';
+			html += '<h4>'+value.titular+'</h4>';
+			html += '<p>'+value.tema+'</p>';
+			html += '<p><a href="'+value.link+'" target="_blank">leer</a></p>';
+			html += '</div>';
+			html += '</div>';
+			if( cnt%3==0 )
+			  html += '</div><div class="row">';
+			cnt++;
+		}
+	  })
+	  html += '</div>';
+	  div.prepend(html);// = html
+	  spin(false);
+	})
   };
 
-  function set_position(month) {
-    window.location.href = '#'+month;
-  }
 
   document.addEventListener('DOMContentLoaded', function(){ 
-    var d = new Date();
-    var months = new Array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+	var d = new Date();
+	var months = new Array('enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
 
-    var year = d.getFullYear();
-    var month = months[d.getMonth()]; 
-    var sheet = month+"_"+year;
-    var url = '//script.google.com/macros/s/AKfycbw8T0PhIuD9NqpH0nOpU32P6ypDjwqvqs-p3nuu67UXCHU8E5qo/exec' + '?id=1AWDMIZsE9k3jQaJlgCKBt8vwVHg4Tg4MqHd-09CRc6I' + '&sheet='+sheet;
-    draw_news(url, year, month, sheet);
-
-    var get_pane = document.getElementById('year-'+year);
-    get_pane.classList.add("active");
+	var year = d.getFullYear();
+	var month = months[d.getMonth()]; 
+	var sheet = month+"_"+year;
+	var url = '//script.google.com/macros/s/AKfycbw8T0PhIuD9NqpH0nOpU32P6ypDjwqvqs-p3nuu67UXCHU8E5qo/exec' + '?id=1AWDMIZsE9k3jQaJlgCKBt8vwVHg4Tg4MqHd-09CRc6I' + '&sheet='+sheet;
+	draw_news(url, year, month, sheet);
   }, false);
 
 </script>
