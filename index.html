@@ -4,8 +4,9 @@ layout: default
 <div id="news">
 
 	<div class="select text-center">
-		<select onchange="get_news(this.value)" data-placeholder="Selecciona una fecha" class="form-control chosen-select">
-			<option value=""></option>
+		<p>Recopilación de artículos de prensa (nacional e internacional) donde se menciona el trabajo de la fundación Ciudadano Inteligente</p>
+		<select onchange="get_news(this.value)" class="form-control">
+			<option value="" disabled selected>Selecciona una fecha</option>
 			{% for period in site.periods %}
 				{% for y in period.years %}
 				<optgroup label="{{ y.year }}">
@@ -61,13 +62,14 @@ layout: default
 	//clean
 	div.empty();
 	$.getJSON( url, function( data ) {
-	  // html = '<div class="page-header"><h4>'+month.toUpperCase()+'</h4></div>'
-	  html = '<div class="row">';
+	  html = '<div class="page-header"><h4>'+month.toUpperCase()+' / '+year+'</h4></div>'
+	  html += '<div class="row">';
 	  var cnt = 1;
 	  $.each(data[sheet], function(key, value){
 		if(value.titular) {
 			html += '<div class="col-md-4 '+sheet+'">';
 			html += '<div class="article-news">';
+			// html += '<h3>'+year+' - '+month+'</h3>';
 			html += '<ul class="list-inline">';
 			html += '<li><span class="label label-success">'+value.medio+'</span></li>';
 			html += '<li><small>'+value.fecha+'</small></li>';
