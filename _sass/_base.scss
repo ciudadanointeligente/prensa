@@ -1,6 +1,6 @@
 body {
 	color: $text-color;
-	background-color: #A3D7DD;
+	background-color: $blue;
 
 	header {
 		background-color: #060626;
@@ -28,6 +28,6 @@ body {
 
 	footer {
 		padding-top: 10px;
-		background-color: #060626;
+		background-color: $blue-dark;
 	}
 }
