@@ -35,13 +35,17 @@ line-height: 20px;
   #news .article-news {
     padding: 0px;
     margin-bottom: 10px;
-    background-color: #FFF; }
+    background-color: #FFF;
+    margin-top: 20px;
+    }
     #news .article-news .img-responsive {
-      width: 100%; }
+      width: 100%;
+  	  }
   #news .article-text {
     padding: 10px 15px 15px 15px;
     margin-bottom: 10px;
-    background-color: #FFF; }
+    background-color: #FFF;
+	}
 
 /*FOOTER*/
 footer {
