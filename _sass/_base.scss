@@ -1,33 +1,82 @@
 body {
-	color: $text-color;
-	background-color: #A3D7DD;
+  background-color: $blue; }
 
-	header {
-		background-color: #060626;
-		padding: 10px 0px;
-		h1 {
-			color: $text-color-header;
-		}
-	}
-
-  .search-form {
-    margin-top: 15px;
-  }
-
-  #news {
-    padding-top: 15px;
-
-		.article-news {
-			border: 1px solid #CCC;
-			border-radius: 5px;
-			padding: 5px 10px;
-			margin-bottom: 10px;
-			background-color: #FFF;
-		}
-	}
-
-	footer {
-		padding-top: 10px;
-		background-color: #060626;
-	}
+header {
+  background-color: $blue-light;
+  padding: 10px 0px;
 }
+
+h1 {
+font-family: 'Roboto Slab', serif;
+color: #FFF;
+font-weight: 700;
+}
+
+h3 {
+font-family: 'Roboto Slab', serif;
+font-weight: 400;
+  a{
+     color: white;
+  }
+}
+
+h3 a:hover{
+  color: $violet-light;
+  text-decoration: none;
+}
+
+h4 {
+font-family: 'Roboto Slab', serif;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+color: white;
+}
+
+.input-group-addon{
+	border: none;
+	padding: 0;
+	background-color: transparent;
+}
+
+
+.fa.fa-search{
+	color: white;
+	float: left;
+	padding-right: 14px;
+}
+
+.search-form {
+  margin-top: 15px; }
+
+.form-control{
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	float: left;
+	width: 100%;
+}
+
+/*NEWS*/
+
+#news {
+  padding-top: 15px; }
+  #news .article-news {
+    padding: 0px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    background-color: $blue-lighter;
+    }
+    #news .article-news .img-responsive {
+      width: 100%;
+  	  }
+  #news .article-text {
+    padding: 10px 15px 15px 15px;
+    margin-bottom: 10px;
+    background-color: $blue-lighter;
+	}
+
+/*FOOTER*/
+footer {
+  padding-top: 10px;
+  background-color: $blue-dark; }

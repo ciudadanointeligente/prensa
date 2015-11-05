@@ -7,7 +7,10 @@ layout: default
     <div class="form-group">
       <!-- <label class="col-md-2" for="filterSearch">Búsqueda</label> -->
       <div class="col-md-12">
-        <input type="text" name="filterSearch" class="form-control" ng-model="filterSearch" placeholder="Búsqueda">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-search fa-lg"></i></div>
+          <input type="text" name="filterSearch" class="form-control" ng-model="filterSearch" placeholder="Búsqueda">
+        </div>
       </div>
     </div>
   </div>
@@ -17,12 +20,14 @@ layout: default
       <div class="col-md-4" ng-repeat="n in news | filter:filterSearch">
         <div class="article-news">
           <img class="img-responsive" src="[[n.imagen]]" ng-if="n.imagen">
-          <h3><a href="[[n.link]]" target="_blank">[[n.titular]]</a></h3>
-          <ul class="list-inline">
-            <li>[[n.fecha]]</li>
-            <li>[[n.tipo_prensa]]</li>
-          </ul>
-          <h4>[[n.bajada]]</h4>
+          <div class="article-text">
+            <h3><a href="[[n.link]]" target="_blank">[[n.titular]]</a></h3>
+            <ul class="list-inline">
+              <li>[[n.fecha]]</li>
+              <li>[[n.tipo_prensa]]</li>
+            </ul>
+            <h4>[[n.bajada]]</h4>
+          </div>  
         </div>
       </div>
     </div>
