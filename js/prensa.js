@@ -8,6 +8,13 @@ app.controller('newsController', ["$scope", "$http", "$timeout", function ($scop
   $http.jsonp(get_news)
       .then( function (response){
         $scope.allnews = response.data
+        var news;
+        $scope.allnews2 = []
+        var color = {'Radio':'pink', 'TV':'violet', 'Online':'orange' }
+        for (news in $scope.allnews){
+        	news.color = color[news.tipo_prensa]
+        	$scope.allnews2.push(news)
+        }
       }, function (response){
         console.log(response)
       })
