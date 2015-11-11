@@ -8,12 +8,13 @@ app.controller('newsController', ["$scope", "$http", "$timeout", function ($scop
   $http.jsonp(get_news)
       .then( function (response){
         $scope.allnews = response.data
-        var news;
-        $scope.allnews2 = []
-        var color = {'Radio':'pink', 'TV':'violet', 'Online':'orange' }
-        for (news in $scope.allnews){
+        var i;
+        var color = {'radio':'pink', 'radio-online':'pink', 'impreso':'calypso', 'impreso-online':'calypso','tv':'orange', 'tv-online':'orange','online':'purple' }
+        var icon_class = {'radio':'fa fa-microphone', 'radio-online':'fa fa-microphone', 'impreso':'fa fa-newspaper-o', 'impreso-online':'fa fa-newspaper-o','tv':'fa fa-television', 'tv-online':'fa fa-television','online':'fa fa-globe' }
+        for (i in $scope.allnews){
+          var news = $scope.allnews[i]
         	news.color = color[news.tipo_prensa]
-        	$scope.allnews2.push(news)
+          news.icon_class = icon_class[news.tipo_prensa]
         }
       }, function (response){
         console.log(response)
