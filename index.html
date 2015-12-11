@@ -16,7 +16,7 @@ layout: default
   </div>
 
   <section id="news" ng-controller="newsController">
-    <div class="row" ng-repeat="news in allnews | chunkBy: 3">
+    <div class="row" ng-repeat="news in allnews | orderBy:'-unixtime' | chunkBy: 3">
       <div class="col-md-4" ng-repeat="n in news | filter:filterSearch">
         <div class="article-news">
           <img class="img-responsive" src="[[n.imagen]]" ng-if="n.imagen">
@@ -27,7 +27,7 @@ layout: default
               <li><i ng-class="n.icon_class"></i></li>
             </ul>
             <h4>[[n.bajada]]</h4>
-          </div>  
+          </div>
         </div>
       </div>
     </div>
