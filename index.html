@@ -10,6 +10,15 @@ layout: default
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-search fa-lg"></i></div>
           <input type="text" name="filterSearch" class="form-control" ng-model="filterSearch" placeholder="Búsqueda">
+          <!-- <select name="filterType" id="filterType">
+            <option value="radio">Radio</option>
+            <option value="radio-online">Radio-Online</option>
+            <option value="impreso">Impreso</option>
+            <option value="impreso-online">Radio-Online</option>
+            <option value="tv">TV</option>
+            <option value="tv-online">TV-Online</option>
+            <option value="online">Online</option>
+          </select> -->
         </div>
       </div>
     </div>
@@ -23,7 +32,7 @@ layout: default
           <div class="article-text" ng-class="n.color">
             <h3><a href="[[n.link]]" target="_blank">[[n.titular]]</a></h3>
             <ul class="list-inline">
-              <li>[[n.fecha]]</li>
+              <li>[[n.format_date]]</li>
               <li><i ng-class="n.icon_class"></i></li>
             </ul>
             <h4>[[n.bajada]]</h4>
