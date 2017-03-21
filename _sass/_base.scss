@@ -1,0 +1,203 @@
+body {
+  background-color: $blue;
+  font-family: 'Roboto Slab', serif;
+
+}
+
+header {
+  background-color: $blue-light;
+  padding: 10px 0px;
+}
+
+h1 {
+font-family: 'Roboto Slab', serif;
+color: #FFF;
+font-weight: 300;
+}
+
+h3 {
+font-family: 'Roboto Slab', serif;
+font-weight: 400;
+  a{
+     color: white;
+  }
+}
+
+h3 a:hover{
+  color: $violet-light;
+  text-decoration: none;
+}
+
+h4 {
+font-family: 'Roboto Slab', serif;
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+color: white;
+}
+
+.input-group-addon{
+	border: none;
+	padding: 0;
+	background-color: transparent;
+}
+
+
+.fa.fa-search{
+	color: white;
+	float: left;
+	padding-right: 14px;
+}
+
+.search-form {
+  margin-top: 15px; }
+
+.form-control{
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	float: left;
+	width: 100%;
+}
+
+/*NEWS*/
+
+#news {
+  padding-top: 15px; }
+  #news .article-news {
+    padding: 0px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    background-color: transparent;
+    }
+    #news .article-news .img-responsive {
+      width: 100%;
+  	  }
+
+#news .article-text {
+    padding: 10px 15px 15px 15px;
+    margin-bottom: 10px;
+    &.violet{
+    background-color: $violet;
+      h3 a:hover{
+        color: $violet-light;
+        text-decoration: none;
+      }
+      ul{
+        color: $violet-light;
+      }
+    }
+    &.purple{
+    background-color: $purple;
+      h3 a:hover{
+        color: $purple-light;
+        text-decoration: none;
+      }
+      ul{
+        color: $purple-light;
+      }
+    }
+    &.pink{
+    background-color: $pink;
+      h3 a:hover{
+        color: $pink-light;
+        text-decoration: none;
+      }
+      ul{
+        color: $pink-light;
+      }
+    }
+    &.orange{
+    background-color: $orange;
+      h3 a:hover{
+        color: $orange-light;
+        text-decoration: none;
+      }
+      ul{
+        color: $orange-light;
+      }
+    }
+    &.calypso{
+    background-color: $calypso;
+      h3 a:hover{
+        color: $calypso-light;
+        text-decoration: none;
+      }
+      ul{
+        color: $calypso-light;
+      }
+    }
+}    
+
+ul{
+  font-weight: 700;
+}
+
+/*FOOTER*/
+footer {
+  padding-top: 10px;
+  background-color: $blue-dark;
+  color: white;
+  a{
+    color: $calypso;
+  }
+  a:hover{
+    color: white;
+    text-decoration: none;
+  }
+}  
+
+  .site-footer {
+  padding: 30px 0;
+  background: #000122;
+}
+
+.footer-heading {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: -.5px;
+  margin-bottom: 15px;
+}
+
+.site-footer .column { float: left; margin-bottom: 15px; }
+
+.footer-col-1 {
+  width: 270px; /*fallback*/
+  width: -webkit-calc(35% - 10px);
+  width: -moz-calc(35% - 10px);
+  width: -o-calc(35% - 10px);
+  width: calc(35% - 10px);
+  margin-right: 10px
+}
+.footer-col-2 {
+  width: 175px; /*fallback*/
+  width: -webkit-calc(23.125% - 10px);
+  width: -moz-calc(23.125% - 10px);
+  width: -o-calc(23.125% - 10px);
+  width: calc(23.125% - 10px);
+  margin-right: 10px
+}
+.footer-col-3 {
+  width: 335px; /*fallback*/
+  width: -webkit-calc(41.875%);
+  width: -moz-calc(41.875%);
+  width: -o-calc(41.875%);
+  width: calc(41.875%);
+}
+
+.site-footer ul { list-style: none; }
+
+.site-footer li,
+.site-footer p {
+  font-size: 15px;
+  letter-spacing: -.3px;
+}
+
+.github-icon-svg,
+.twitter-icon-svg {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 3px;
+}
