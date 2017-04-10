@@ -15,12 +15,13 @@ app.controller('newsController', ["$scope", "$http", "$timeout", function ($scop
       var months = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"]
       for (i in $scope.allnews){
         if ($scope.allnews[i]['destacada'] === "1") {
-          var news = $scope.allnews[i]
-          news.unixtime = $scope.allnews[i]['fecha']
-          n_date = new Date(parseInt($scope.allnews[i]['fecha'])).getDate().toString() +'-'+ months[new Date(parseInt($scope.allnews[i]['fecha'])).getMonth()].toString() +'-'+ new Date(parseInt($scope.allnews[i]['fecha'])).getFullYear().toString() //#
-          news.format_date = n_date
-          news.color = color[news.tipo_prensa.toLowerCase()]
-          news.icon_class = icon_class[news.tipo_prensa]
+          var news = $scope.allnews[i];
+          news.unixtime = $scope.allnews[i]['fecha'];
+          n_date = new Date(parseInt($scope.allnews[i]['fecha'])).getDate().toString() +'-'+ months[new Date(parseInt($scope.allnews[i]['fecha'])).getMonth()].toString() +'-'+ new Date(parseInt($scope.allnews[i]['fecha'])).getFullYear().toString(); //#
+          news.format_date = n_date;
+          news.color = color[news.tipo_prensa.toLowerCase()];
+          news.icon_class = icon_class[news.tipo_prensa.toLowerCase()];
+          news.medio = $scope.allnews[i]['medio'];
         }
       }
     }, function (response){
