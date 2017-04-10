@@ -4,7 +4,7 @@ var app = angular.module('prensaApp', ['ngRoute','angular.filter'], function($in
 });
 
 app.controller('newsController', ["$scope", "$http", "$timeout", function ($scope, $http, $timeout){
-  get_news = "//api.morph.io/ciudadanointeligente/prensa-ci/data.json?key=NB5JgFSb%2FeF87jzVs983&query=select%20*%20from%20'data'%20where%20destacada%20%3D%20%221%22%20order%20by%20fecha%20DESC&callback=JSON_CALLBACK"
+  get_news = "//api.morph.io/ciudadanointeligente/prensa-ci/data.json?key=NB5JgFSb%2FeF87jzVs983&query=select%20*%20from%20%27data%27%20where%20destacada%3D%221%22%20order%20by%20fecha%20DESC%20limit%20102&callback=JSON_CALLBACK"
 
     $http.jsonp(get_news)
     .then( function (response){
